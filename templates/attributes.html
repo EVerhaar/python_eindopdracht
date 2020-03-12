@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Food randomizer</title>
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='attributes.css') }}">
+        <link href="https://fonts.googleapis.com/css?family=Amatic+SC:400,700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <div class="navbar">
+                    <a href="/"><p  class="nava">Randomize</p></a>
+                        <div class="dropdown">
+                            <button class="dropbtn">Ingredients</button>
+                                <div class="dropdown-content">
+                                    <a href="/attributes"><p>All ingredients</p></a>
+                                    {% for i in range(0, len) %}
+                                        {% if category %}
+                                            <a href="{{ key[i] }}"><p>{{ key[i] }}</p></a>
+                                        {% else %}
+                                            <a href="/attributes/{{ key[i] }}"><p>{{ key[i] }}</p></a>
+                                        {% endif %}
+                                    {% endfor %}<br>
+                                </div>
+                        </div>
+            </div>
+        </nav>
+        <div class="content">
+            <div class="main">
+        {% if category %}
+                <h1>View all {{ category }}</h1>
+            {% for i in range(0, len) %}
+                <p>{{ Allfoodlist[y][i] }}</p>
+            {% endfor %}
+        {% else %}
+                <h1>View all possible ingredients</h1>
+                {% for i in range (0, len)%}
+                    <p><strong>{{ key[i] }}</strong></p>
+                    <p>{{ Allfoodlist[i] }}</p><br>
+                {% endfor %}
+        {% endif %}<br>
+            </div>
+        </div>
+    </body>
+</html>
